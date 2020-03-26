@@ -15,13 +15,18 @@ const ContractsTab = ({
 }) => {
     return (
         <div className="flex-col">
-            {isAdmin && userType === 'rights_holder' && <h5>Rights Holder View</h5>}
+            {isAdmin && userType === 'rights_holder' && (
+                <h5>Rights Holder View</h5>
+            )}
             {isAdmin && userType === 'narrator' && <h5>Narrator View</h5>}
-            {!contracts.length && userType === 'narrator' && <p>There are no contracts for you yet.</p>}
+            {!contracts.length && userType === 'narrator' && (
+                <p>There are no contracts for you yet.</p>
+            )}
             {!contracts.length && userType === 'rights_holder' && (
                 <p>
-                    There are no contracts for you yet. Once you book a narrator, we will prepare contracts for you and
-                    notify you when they're ready to be signed.
+                    There are no contracts for you yet. Once you book a
+                    narrator, we will prepare contracts for you and notify you
+                    when they're ready to be signed.
                 </p>
             )}
             {!!contracts.length && <p className="para-bold">Your Contracts</p>}
@@ -32,7 +37,11 @@ const ContractsTab = ({
                         <Contract
                             onDownloadContractPdf={onDownloadContractPdf}
                             openHelloSignClient={openHelloSignClient}
-                            key={contract.fake ? makeUniqueKey(12) : contract.template_id}
+                            key={
+                                contract.fake
+                                    ? makeUniqueKey(12)
+                                    : contract.template_id
+                            }
                             {...contract}
                             isAdmin={isAdmin}
                         />
